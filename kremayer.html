@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="img/favicon.ico" rel="icon">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Lise Makine Bölümü İçin Hesaplamalar</title>
+</head>
+<body>
+    <div id="spinner"
+        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
+        <a href="index.html" class="navbar-brand ps-5 me-0">
+            <h1 class="text-white m-0">Kremayer Dişli</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="index.html" class="nav-item nav-link">Ana Sayfa</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">Dişli Çarklar</a>
+                    <div class="dropdown-menu bg-light m-0">
+                        <a href="duzdisli.html" class="dropdown-item">Düz Dişli Çark</a>
+                        <a href="kremayer.html" class="dropdown-item active">Kremayer Dişli Çark</a>
+                    </div>
+                </div>
+                <a href="sinematik.html" class="nav-item nav-link">Sinematik</a>
+                <a href="dinamik.html" class="nav-item nav-link">Dinamik</a>
+                <a href="bileske.html" class="nav-item nav-link">Bileşke</a>
+              </div>
+        </div>
+    </nav>
+    <br>
+    <br><section class="explore-section section-padding" id="section_2">
+        <div class="container">
+                <div class="col-12 text-center">
+                        <h2 class="mb-4">Kremayer Dişli Çark Hesaplaması</h1>
+                            <p>Seçtiğiniz dişli türü "Kremayer Dişli".</p>
+                            <br>
+                            <div class="container">
+                                <h4 class="p-3 text-center textcolor">Kremayer Dişli Hesapla</h4>
+                                <hr class="brace">
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="modul" placeholder="Modül"  maxlength="10" required>
+                                <label for="modul">Modülü giriniz:</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="number" class="form-control" id="uzunluk" placeholder="Uzunluk"  maxlength="10" required>
+                                <label for="uzunluk">Uzunluğu mm cinsinden giriniz:</label>
+                            </div>
+                            <div class="container">
+                                <button type="button" class="btn btn-outline-dark clickbutton" onclick="KremayerHesapla()">Hesapla </button>
+                                <button type="button" class="btn btn-outline-dark clickbutton" onclick="KremayerTemizle()">Temizle</button>
+                            </div>
+                            <hr class="brace">
+                            <section class="p-5 text-center" id="sonuclar"></section>
+                            <h4 class="p-3 text-center textcolor">Sonuçlar:</h4>
+                            <table class="table table-bordered fixed-table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Sıralama</th>
+                                    <th scope="col">İsmi</th>
+                                    <th scope="col">Sonucu</th>
+                                  </tr>
+                                </thead> 
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">p</th>
+                                    <td>Adım: </td>
+                                    <td id="kremayer-adim"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">h</th>
+                                    <td>Diş Derinliği: </td>
+                                    <td id="kremayer-dis-derinlik"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">ha</th>
+                                    <td>Diş Üstü Yüksekliği:</td>
+                                    <td id="kremayer-dis-ustu-yukseklik"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">hf</th>
+                                    <td>Diş Dibi Yüksekliği:</td>
+                                    <td id="kremayer-dis-dibi-yukseklik"> </td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">H</th>
+                                    <td>Büyük H:</td>
+                                    <td id="kremayer-buyuk-h"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">b</th>
+                                    <td>Diş Genisliği:</td>
+                                    <td id="kremayer-dis-genislik"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">z</th>
+                                    <td>Boydaki Diş Sayisi:</td>
+                                    <td id="kremayer-boydaki-dis"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">L0</th> 
+                                    <td>Kremayer Boyu:</td>
+                                    <td id="kremayer-kremayer-boy"></td>
+                                  </tr>
+                                  <tr>
+                                    <th scope="row">Lk</th>
+                                    <td>Kurs Boyu:</td>
+                                    <td id="kremayer-kurs_boy"></td>
+                                  </tr>
+                                </tbody>
+                            </table>
+                            <br><br>
+</section>
+
+
+
+    <div class="container-fluid copyright bg-dark py-4">
+        <div class="container text-center">
+            <p class="mb-0">Project By: <a class="fw-semi-bold" href="https://github.com/kyrstr1">Kayra SATIR</a> </p>
+        </div>
+    </div>
+
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
